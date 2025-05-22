@@ -1,0 +1,72 @@
+# File: Cargo.toml
+# Professional Rust API Project Configuration
+# This file defines project metadata, dependencies, and build settings
+
+[package]
+name = "rust-api"
+version = "3.0.0"
+edition = "2021"
+authors = ["Abdulwahed <abdulwahed@gmail.com>"]
+description = "A comprehensive project management API built with Rust and Warp"
+license = "MIT"
+repository = "https://github.com/abdulwahed-sweden/rust-api"
+keywords = ["api", "project-management", "rust", "warp"]
+categories = ["web-programming::http-server"]
+
+[dependencies]
+# Web framework and async runtime
+tokio = { version = "1.0", features = ["full"] }
+warp = "0.3"
+
+# Serialization and JSON handling
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Date and time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# UUID generation for unique identifiers
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+# Database connectivity (PostgreSQL)
+tokio-postgres = "0.7"
+deadpool-postgres = "0.10"
+
+# Environment variables and configuration
+dotenv = "0.15"
+config = "0.13"
+
+# Logging and tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Authentication and security
+jsonwebtoken = "8.0"
+bcrypt = "0.14"
+
+# Input validation
+validator = { version = "0.16", features = ["derive"] }
+
+# HTTP client for external APIs
+reqwest = { version = "0.11", features = ["json"] }
+
+[dev-dependencies]
+# Testing utilities
+tokio-test = "0.4"
+assert_matches = "1.5"
+
+# Development and debugging tools
+[profile.dev]
+opt-level = 0
+debug = true
+
+# Production optimizations
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
