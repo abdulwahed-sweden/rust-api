@@ -1,8 +1,0 @@
-services:
-  rust-api:
-    build: .
-    ports:
-      - "8002:8002"
-    environment:
-      - RUST_LOG=info
-    restart: unless-stopped
